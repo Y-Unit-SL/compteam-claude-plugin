@@ -5,12 +5,13 @@
 Run from the repository root:
 
 ```bash
-claude plugin validate .
+npx --yes --package @anthropic-ai/claude-code@2.1.318 claude plugin validate --strict .claude-plugin/plugin.json
+npx --yes --package @anthropic-ai/claude-code@2.1.318 claude plugin validate --strict .claude-plugin/marketplace.json
 ```
 
 Install the candidate from a local marketplace or load it with `claude --plugin-dir .`. Verify public club search, schedules, prices, and branch details. Complete Compteam OAuth, then verify `connect_compteam_account`, `list_my_subjects`, `list_my_classes`, and `get_account_status` with an authorized test account. Test RSVP and trial inquiries only with a suitable test account and explicit confirmation of those changes.
 
-The CLI validates structure; it does not establish that OAuth or the live tools work. Check the actual outcomes on each supported Claude surface. Do not publish a claim of completed acceptance testing based only on the validator.
+The commands pin the validator used for this release; older Claude Code versions may reject newer directory metadata fields. The CLI validates structure; it does not establish that OAuth or the live tools work. Check the actual outcomes on each supported Claude surface. Do not publish a claim of completed acceptance testing based only on the validator.
 
 ## Production authentication setup
 
