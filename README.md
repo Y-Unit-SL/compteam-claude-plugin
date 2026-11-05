@@ -16,7 +16,7 @@ Public club details, schedules, and membership prices can be read without signin
 
 ## Install in Claude Code
 
-Run:
+Use Claude Code 2.1.318 or later; older builds may reject the bundle's current directory metadata. Run `claude update` to update an existing installation, then:
 
 ```bash
 claude plugin marketplace add Y-Unit-SL/compteam-claude-plugin
