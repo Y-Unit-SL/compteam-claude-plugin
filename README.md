@@ -69,7 +69,7 @@ Linked-child features are for authorized parents or guardians. This training-man
 ## Documentation and support
 
 - [Compteam MCP guide](https://compteam.io/documentation/mcp)
-- [Support](https://compteam.io/documentation/support)
+- Support: [info@compteam.io](mailto:info@compteam.io)
 - [Privacy policy](https://compteam.io/privacy)
 - [Terms of service](https://compteam.io/terms)
 - Contact: [info@compteam.io](mailto:info@compteam.io)
