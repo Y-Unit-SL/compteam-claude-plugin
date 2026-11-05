@@ -4,7 +4,7 @@ Find Brazilian jiu-jitsu (BJJ) and martial arts clubs, explore class schedules, 
 
 ## Release status
 
-This is the initial preview bundle. The public discovery endpoint is available. Full account connection is still undergoing acceptance testing; the server's OAuth challenge update must be deployed and the complete consent and token exchange checked before the directory release. Publishing this repository does not mean Anthropic has approved or listed the plugin.
+This is a preview bundle. Public discovery and the protected-tool HTTP 401 OAuth challenges were verified in production on 2026-11-05. Full account connection is still undergoing acceptance testing: the existing Supabase token hook must be activated and the complete consent and token exchange checked before the directory release. Publishing this repository does not mean Anthropic has approved or listed the plugin.
 
 ## What is included
 
@@ -60,7 +60,9 @@ Club discovery searches participating clubs by name. It is not a complete geogra
 
 The plugin sends the arguments needed for each requested operation to the Compteam MCP server. Public searches send club names, branch identifiers, and requested weeks. After OAuth connection, personal tools use the authorized account to read limited membership, payment-status, and class information for the member or a linked child. Attendance changes send the selected class and intended RSVP. A trial inquiry sends the details the user supplies in the form to Compteam for the selected club to handle.
 
-The bundle contains no local executable, hook, analytics collector, or credential file and creates no local application data store. Claude manages its conversation history and OAuth credentials under Anthropic's controls. Compteam processes and retains server-side account and inquiry data under its [privacy policy](https://compteam.io/privacy). This bundle does not define a separate server-side retention period or send data to a separate service. Follow the privacy policy's contact and deletion-request instructions for Compteam data, and disconnect the connector through Claude to stop future access.
+The bundle contains no local executable, hook, analytics collector, or credential file and creates no local application data store. Its skill sends tool requests only through the declared Compteam connector. The trial form uses Cloudflare Turnstile for a security check, which may process browser or device signals. Compteam's privacy policy describes its service providers and how inquiries reach the selected club.
+
+Claude manages its conversation history and OAuth credentials under Anthropic's controls. Compteam processes and retains server-side account and inquiry data under its [privacy policy](https://compteam.io/privacy); this bundle does not define a separate server-side retention period. Follow that policy's contact and deletion-request instructions for Compteam data, and disconnect the connector through Claude to stop future access.
 
 Linked-child features are for authorized parents or guardians. This training-management plugin does not provide medical or fitness-safety advice. Do not put passwords, OAuth codes, payment credentials, or identity documents in the conversation.
 

@@ -26,11 +26,13 @@ Both are public clients with token endpoint authentication `none`, no secret, an
 
 Before directory launch:
 
-- Deploy the MCP protected-call HTTP 401 challenge fix. Public discovery and `tools/list` must remain anonymous.
-- Confirm the Supabase Custom Access Token hook issues the exact MCP audience and approved client identity.
+- The MCP HTTP 401 challenge fix was merged in [API PR #735](https://github.com/Y-Unit-SL/bjj-comp-saas/pull/735) and deployed on Render on 2026-11-05. Production initialization, public tool listing/search, protected HTTP challenges and resource metadata passed their checks. Keep anonymous public discovery available in future releases.
+- Activate the existing Supabase Custom Access Token hook and confirm it issues the exact MCP audience and approved client identity. The production Auth Hooks page had no configured hook when checked on 2026-11-05; activation was prepared but not saved.
 - Complete sign-in, consent, token exchange, refresh, and protected tool calls in Claude. An authorization redirect alone does not establish a working account connection.
 - Complete the supported workflows with the reviewer account and obtain the required MCP App screenshots if the trial form is included in the connector listing.
 - Update the README's release status to reflect the actual validated behavior.
+
+The wider live Registry checker reported that the public MCP documentation page lacks its expected `io.compteam/compteam` identifier. This documentation check remains separate from the passing production API checks.
 
 Do not put service-role keys, user tokens, reviewer passwords, or confidential OAuth client secrets in this public repository. Enter reviewer credentials and any Anthropic-held confidential client credentials only in the developer portal.
 
