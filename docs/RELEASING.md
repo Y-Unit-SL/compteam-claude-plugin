@@ -27,7 +27,7 @@ Both are public clients with token endpoint authentication `none`, no secret, an
 Before directory launch:
 
 - The MCP HTTP 401 challenge fix was merged in [API PR #735](https://github.com/Y-Unit-SL/bjj-comp-saas/pull/735) and deployed on Render on 2026-11-05. Production initialization, public tool listing/search, protected HTTP challenges and resource metadata passed their checks. Keep anonymous public discovery available in future releases.
-- Activate the existing Supabase Custom Access Token hook and confirm it issues the exact MCP audience and approved client identity. The production Auth Hooks page had no configured hook when checked on 2026-11-05; activation was prepared but not saved.
+- The Supabase Custom Access Token hook (`public.compteam_mcp_access_token_hook`) is enabled in production as of 2026-11-05. A dry run left ordinary app claims unchanged and set the MCP audience and `compteam_mcp_client` claim for an approved client; a later production login logged "Hook ran successfully". Real Claude-issued tokens still need confirming in the sign-in step below.
 - Complete sign-in, consent, token exchange, refresh, and protected tool calls in Claude. An authorization redirect alone does not establish a working account connection.
 - Complete the supported workflows with the reviewer account and obtain the required MCP App screenshots if the trial form is included in the connector listing.
 - Update the README's release status to reflect the actual validated behavior.
