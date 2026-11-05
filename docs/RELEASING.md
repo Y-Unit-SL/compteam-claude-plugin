@@ -1,0 +1,67 @@
+# Release the Claude bundle
+
+## Validate a candidate
+
+Run from the repository root:
+
+```bash
+claude plugin validate .
+```
+
+Install the candidate from a local marketplace or load it with `claude --plugin-dir .`. Verify public club search, schedules, prices, and branch details. Complete Compteam OAuth, then verify `connect_compteam_account`, `list_my_subjects`, `list_my_classes`, and `get_account_status` with an authorized test account. Test RSVP and trial inquiries only with a suitable test account and explicit confirmation of those changes.
+
+The CLI validates structure; it does not establish that OAuth or the live tools work. Check the actual outcomes on each supported Claude surface. Do not publish a claim of completed acceptance testing based only on the validator.
+
+## Production authentication setup
+
+The initial public registrations, created and read back on 2026-11-05, are:
+
+| Client | Public client ID | Exact callback |
+| --- | --- | --- |
+| Claude web and Desktop custom connector | `29d102c3-57e8-4817-8a0e-eeff89e5aea0` | `https://claude.ai/api/mcp/auth_callback` |
+| Claude Code bundle | `b217b550-6efe-4743-b40b-495c6c9e07d4` | `http://localhost:38761/callback` |
+
+Both are public clients with token endpoint authentication `none`, no secret, and an active `marketplace_safe` Compteam client registration. The resource audience is `https://api.compteam.io/mcp`. Each user still needs to complete their own authorization-code flow with PKCE.
+
+Before directory launch:
+
+- Deploy the MCP protected-call HTTP 401 challenge fix. Public discovery and `tools/list` must remain anonymous.
+- Confirm the Supabase Custom Access Token hook issues the exact MCP audience and approved client identity.
+- Complete sign-in, consent, token exchange, refresh, and protected tool calls in Claude. An authorization redirect alone does not establish a working account connection.
+- Complete the supported workflows with the reviewer account and obtain the required MCP App screenshots if the trial form is included in the connector listing.
+- Update the README's release status to reflect the actual validated behavior.
+
+Do not put service-role keys, user tokens, reviewer passwords, or confidential OAuth client secrets in this public repository. Enter reviewer credentials and any Anthropic-held confidential client credentials only in the developer portal.
+
+## Submit to Claude's directory
+
+Use the Claude organization that should own the listing. Connect a GitHub account with push access to this repository.
+
+At [the developer portal](https://claude.ai/directory/manage), select **Submit new → Plugin bundle** and enter:
+
+| Field | Value |
+| --- | --- |
+| Repository | `Y-Unit-SL/compteam-claude-plugin` |
+| Plugin path | Leave empty; the plugin is at the repository root |
+| Tracked branch | `main` |
+
+Run portal validation, fix blocking findings, and validate again after any push. The listing comes from `.claude-plugin/plugin.json` and `README.md`. Describe data handling accurately using the README and Compteam privacy policy, review the compliance acknowledgements, and submit for review. Passing validation does not publish the plugin: request **Publish** when the version is eligible, following the review setting shown in the portal.
+
+Also submit `https://api.compteam.io/mcp` as an **MCP connector** from the same Claude organization and pair it with this bundle. The server URL must stay identical in both configurations to avoid duplicate tools. For a hosted connection without consumers entering a client ID, follow Anthropic's current guidance for confidential credentials held by Anthropic; the public clients in this repository are not that confidential registration.
+
+## Release an update
+
+1. Increase `version` in `.claude-plugin/plugin.json` and update the documentation for the final behavior.
+2. Validate, test the changed workflows, and commit the candidate.
+3. Push to `main`. Claude checks the tracked branch through the configured webhook or scheduled checks.
+4. Inspect the portal's validation and scan results; use **Check for new commits** to refresh immediately.
+5. Publish the passing version according to the portal's review settings. Users keep the previous published version until the update goes live.
+
+GitHub tags and Releases are useful source snapshots; they do not submit or approve a Claude directory release. Use a prerelease label while account-linking acceptance remains outstanding.
+
+## Official references
+
+- [Plugin submission](https://claude.com/docs/plugins/submit)
+- [Pre-submission checklist](https://claude.com/docs/plugins/pre-submission-checklist)
+- [Connector authentication](https://claude.com/docs/connectors/building/authentication)
+- [Plugin and connector listings](https://claude.com/docs/directory/publish)

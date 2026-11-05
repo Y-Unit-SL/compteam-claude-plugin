@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "compteam": {
+      "type": "http",
+      "url": "https://api.compteam.io/mcp",
+      "oauth": {
+        "clientId": "b217b550-6efe-4743-b40b-495c6c9e07d4",
+        "callbackPort": 38761
+      }
+    }
+  }
+}

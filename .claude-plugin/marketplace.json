@@ -1,0 +1,17 @@
+{
+  "name": "compteam-marketplace",
+  "owner": {
+    "name": "Compteam",
+    "email": "info@compteam.io"
+  },
+  "metadata": {
+    "description": "Compteam plugins for BJJ class discovery and training attendance."
+  },
+  "plugins": [
+    {
+      "name": "compteam",
+      "source": "./",
+      "description": "Find BJJ classes and manage your Compteam training attendance."
+    }
+  ]
+}

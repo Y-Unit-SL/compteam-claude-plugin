@@ -1,0 +1,14 @@
+{
+  "name": "compteam",
+  "version": "0.1.0",
+  "description": "Find Brazilian jiu-jitsu clubs, class schedules and membership prices. Connect Compteam to view your classes and manage attendance for yourself or a linked child.",
+  "author": {
+    "name": "Compteam",
+    "email": "info@compteam.io",
+    "url": "https://compteam.io"
+  },
+  "homepage": "https://compteam.io/documentation/mcp",
+  "repository": "https://github.com/Y-Unit-SL/compteam-claude-plugin",
+  "license": "Unlicense",
+  "keywords": ["bjj", "brazilian-jiu-jitsu", "martial-arts", "classes", "membership", "training", "attendance"]
+}
