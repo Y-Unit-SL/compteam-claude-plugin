@@ -4,7 +4,7 @@ Find Brazilian jiu-jitsu (BJJ) and martial arts clubs, explore class schedules, 
 
 ## Release status
 
-This is a preview bundle. Public discovery and the protected-tool HTTP 401 OAuth challenges were verified in production on 2026-11-05. Full account connection is still undergoing acceptance testing: the existing Supabase token hook must be activated and the complete consent and token exchange checked before the directory release. Publishing this repository does not mean Anthropic has approved or listed the plugin.
+This is a preview bundle. Public discovery, protected-tool HTTP 401 challenges, the production token hook, and Claude's OAuth consent and callback were verified on 2026-11-05. A real Claude conversation successfully called `connect_compteam_account`, `list_my_subjects`, `get_account_status`, and `list_my_classes`. Attendance changes and trial inquiries were not exercised on the owner's production account. Publishing this repository does not mean Anthropic has approved or listed the plugin.
 
 ## What is included
 
@@ -25,7 +25,7 @@ claude plugin install compteam@compteam-marketplace
 
 Restart your Claude Code session after installation. Use `/compteam:compteam-training` or ask a relevant question. Open `/mcp` to inspect the connection and sign in when using personal features.
 
-The bundle configures a public OAuth client and a fixed callback at `http://localhost:38761/callback` for Claude Code. There is no client secret in the bundle. If that local port is occupied, close the application using it and retry authentication. A remote or headless terminal must be able to complete the callback flow on the machine running Claude Code.
+The bundle configures a public OAuth client with exact callbacks for Claude Code (`http://localhost:38761/callback`) and Claude's hosted apps (`https://claude.ai/api/mcp/auth_callback`). There is no client secret in the bundle. For Claude Code, if the local callback port is occupied, close the application using it and retry authentication. A remote or headless terminal must be able to complete the callback flow on the machine running Claude Code.
 
 For a single local development session:
 
@@ -42,7 +42,7 @@ Until the directory listing is published, add a custom connector in Claude's con
 3. Enter public client ID `29d102c3-57e8-4817-8a0e-eeff89e5aea0` and leave the optional client secret blank.
 4. Sign in on Compteam's consent page and approve access to your own account.
 
-This hosted client uses `https://claude.ai/api/mcp/auth_callback`. The localhost client in `.mcp.json` is specifically for Claude Code. Each user authorizes their own account; neither public client ID grants access by itself. Directory-managed connection setup will be documented when that listing is published.
+This custom-connector client uses `https://claude.ai/api/mcp/auth_callback`. The bundle's embedded client also accepts that hosted callback, so it can be used when the plugin loads in Claude web or Desktop. Each user authorizes their own account; neither public client ID grants access by itself. Directory-managed connection setup is separate from publishing this repository.
 
 ## Try asking
 
