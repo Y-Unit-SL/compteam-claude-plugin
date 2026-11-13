@@ -1,5 +1,7 @@
 # Compteam — BJJ Classes & Memberships
 
+Official documentation: [Compteam MCP server](https://compteam.io/mcp), [Compteam API documentation](https://compteam.io/developers/api), and [developer index](https://compteam.io/developers).
+
 Find Brazilian jiu-jitsu (BJJ) and martial arts clubs, explore class schedules, and compare membership plans and prices. Connect your Compteam account to view upcoming classes, check membership and payment status, and manage attendance for yourself or a linked child. You can also ask a club about an eligible free trial class.
 
 ## Release status
